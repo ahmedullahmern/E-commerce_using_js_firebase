@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="singup.css">
+</head>
+
+<body>
+    <div class="perant">
+        <form class="f1" id="signup_form">
+            <div class="card abc " style="width: 18rem;">
+                <h1 class="head">Signup</h1>
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
+                        file</label>
+                    <input required
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        aria-describedby="file_input" id="file_input" type="file">
+                </div>
+                <input required type="email" class="form-control" placeholder="Email Address or phone number"
+                    id="email_input" aria-describedby="emailHelp">
+                <input required type="password" class="form-control" placeholder="password" id="password_input"
+                    aria-describedby="emailHelp">
+
+                <button class="btn btn-primary" type="submit" id="signup_btn">
+                    Signup
+                </button>
+
+
+                <br>
+                <center>
+                    <p>Already have an account ?.
+                        <a class="p-1 rounded" href="../login/login.html">Login</a>
+                    </p>
+            </div><br>
+        </form>
+    </div>
+
+    <script src="signup.js" type="module"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script> -->
+</body>
+
+</html>

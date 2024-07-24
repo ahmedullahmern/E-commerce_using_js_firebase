@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Form</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Product</h2>
+        <form  id="product_form">
+            <div class="form-group">
+                <label for="file">Uplaod_Image</label><br>
+                <input type="file" id="uploade_file" name="file" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" placeholder="Enter you Product Name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" placeholder="Enter Your Price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="name" placeholder="Enter you Category" name="name" required>
+            </div>
+            <button type="submit" class="btn">Add Product</button>
+        </form>
+    </div>
+    <script src="product.js" type="module"></script>
+</body>
+
+</html>

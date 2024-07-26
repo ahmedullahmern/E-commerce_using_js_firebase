@@ -6,6 +6,7 @@ login_form.addEventListener("submit",function(e){
     e.preventDefault()
     console.log("e",e);
 
+
     const email =  e.target[0].value
     const password =  e.target[1].value
     console.log("email", email);
@@ -23,7 +24,3 @@ login_form.addEventListener("submit",function(e){
         alert(error)
       });
 })
-
-
-
-

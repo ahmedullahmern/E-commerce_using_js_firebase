@@ -1,6 +1,5 @@
 import { uploadBytes, getDownloadURL, ref, storage, db, collection, addDoc } from "../utils.js"
 
-// import { ref } from "../utils";
 
 
 const product_form = document.getElementById("product_form")
@@ -23,11 +22,11 @@ product_form.addEventListener("submit", function (e) {
             console.log("url Agaya");
             productInfo.images = url
 
-            const productCollection = collection(db,"addProduct")
-            addDoc(productCollection,productInfo).then((doc)=>{
+            const productCollection = collection(db, "addProduct")
+            addDoc(productCollection, productInfo).then((doc) => {
                 console.log("add document to db");
                 window.location.href = '/'
-            }).catch((err)=>{
+            }).catch((err) => {
                 alert(err)
             })
         }).catch((er) => {

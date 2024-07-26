@@ -11,14 +11,16 @@ import {
     getStorage,
     ref,
     uploadBytes,
-    getDownloadURL
+    getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js";
 import {
     getFirestore,
     doc,
     setDoc,
     collection,
-    addDoc
+    addDoc,
+    getDoc,
+    getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 
@@ -52,7 +54,9 @@ export {
     signOut,
     signInWithEmailAndPassword,
     collection,
-    addDoc
+    addDoc,
+    getDoc,
+    getDocs
 }
 
 

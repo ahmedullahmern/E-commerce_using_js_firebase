@@ -13,6 +13,7 @@ product_form.addEventListener("submit", function (e) {
         productName: e.target[1].value,
         productPrice: e.target[2].value,
         productCategerous: e.target[3].value,
+        Likes : []
     }
 
     const imgRef = ref(storage, productInfo.images.name)

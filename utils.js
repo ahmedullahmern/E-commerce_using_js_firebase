@@ -20,7 +20,12 @@ import {
     collection,
     addDoc,
     getDoc,
-    getDocs
+    getDocs,
+    arrayUnion,
+    arrayRemove,
+    updateDoc,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 
@@ -56,7 +61,12 @@ export {
     collection,
     addDoc,
     getDoc,
-    getDocs
+    getDocs,
+    arrayUnion,
+    arrayRemove,
+    updateDoc,
+    query,
+    where
 }
 
 

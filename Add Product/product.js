@@ -3,9 +3,12 @@ import { uploadBytes, getDownloadURL, ref, storage, db, collection, addDoc } fro
 
 
 const product_form = document.getElementById("product_form")
+const Add_Product_btn = document.getElementById("Add_Product_btn")
 
 product_form.addEventListener("submit", function (e) {
     e.preventDefault()
+    Add_Product_btn.disabled = true
+    Add_Product_btn.innerText = "Add Product"
     console.log("e console", e);
 
     const productInfo = {
@@ -13,7 +16,7 @@ product_form.addEventListener("submit", function (e) {
         productName: e.target[1].value,
         productPrice: e.target[2].value,
         productCategerous: e.target[3].value,
-        Likes : []
+        Likes: []
     }
 
     const imgRef = ref(storage, productInfo.images.name)
@@ -26,15 +29,21 @@ product_form.addEventListener("submit", function (e) {
             const productCollection = collection(db, "addProduct")
             addDoc(productCollection, productInfo).then((doc) => {
                 console.log("add document to db");
+                Add_Product_btn.disabled = false
+                Add_Product_btn.innerText = "Add Product"
                 window.location.href = '/'
             }).catch((err) => {
                 alert(err)
             })
         }).catch((er) => {
             alert(er)
+            Add_Product_btn.disabled = false
+            Add_Product_btn.innerText = "Add Product"
         })
     }).catch((e) => {
         alert(e)
+        Add_Product_btn.disabled = false
+        Add_Product_btn.innerText = "Add Product"
     })
 
 })

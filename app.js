@@ -21,6 +21,7 @@ const login_btn_home = document.getElementById("login_btn_home")
 const user_image = document.getElementById("user_image")
 const addproduct_home = document.getElementById("addproduct_home")
 const dispaly_product = document.getElementById("dispaly_product")
+const myProduts_home = document.getElementById("myProduts_home")
 getaAllproducts()
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -28,8 +29,12 @@ onAuthStateChanged(auth, (user) => {
         getUserImage(uid)
         login_btn_home.style.display = "none"
         user_image.style.display = "inline-block"
-        addproduct_home.style.display = "block"
+        addproduct_home.style.display = "inline-block"
+        myProduts_home.style.display = "inine-block"
+        signout_btn.style.display = "inline_block"
     } else {
+        signout_btn.style.display = "none"
+        myProduts_home.style.display = "none"
         login_btn_home.style.display = "inline-block"
         user_image.style.display = "none"
         addproduct_home.style.display = "none"
@@ -60,7 +65,7 @@ async function getaAllproducts() {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
             const products = doc.data()
-            const { images, productName, productPrice,Likes , productCategerous } = products
+            const { images, productName, productPrice, Likes, productCategerous } = products
             console.log(products);
             const cartProduce = `
         <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -88,23 +93,23 @@ async function getaAllproducts() {
 function carted(e) {
     console.log("this", e.innerText);
     if (auth.currentUser) {
-        const docRef = doc(db , "addProduct" , e.id)
-        if(e.innerText == "carted..."){
-            updateDoc(docRef,{
-                Likes : arrayRemove(auth.currentUser.uid)
-            }).then(()=>{
+        const docRef = doc(db, "addProduct", e.id)
+        if (e.innerText == "carted...") {
+            updateDoc(docRef, {
+                Likes: arrayRemove(auth.currentUser.uid)
+            }).then(() => {
                 e.innerText = "Add to Cart"
-            }).catch((errr)=>{
+            }).catch((errr) => {
                 console.log(errr);
             })
 
-        }else{
+        } else {
 
-            updateDoc(docRef,{
-                Likes : arrayUnion(auth.currentUser.uid)
-            }).then(()=>{
+            updateDoc(docRef, {
+                Likes: arrayUnion(auth.currentUser.uid)
+            }).then(() => {
                 e.innerText = "carted..."
-            }).catch((errr)=>{
+            }).catch((errr) => {
                 console.log(errr);
             })
         }

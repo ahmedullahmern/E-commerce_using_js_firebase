@@ -21,8 +21,8 @@ onAuthStateChanged(auth,(user)=>{
 
 
 
+user_profile_email.innerText="Loading..."
 function getProfile(profileUid){
-    user_profile_email.innerText="Loading..."
     const imageRef = doc(db,"users",profileUid)
     getDoc(imageRef).then((data)=>{
         console.log(data.data());
@@ -30,6 +30,8 @@ function getProfile(profileUid){
         user_profile_email.innerText = data.data().email 
     }).catch((err)=>{
         console.log(err);
+        alert(err)
+        user_profile_email.innerText="user@example.com"
     })
 }
 

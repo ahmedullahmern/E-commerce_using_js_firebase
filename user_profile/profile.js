@@ -22,6 +22,7 @@ onAuthStateChanged(auth,(user)=>{
 
 
 function getProfile(profileUid){
+    user_profile_email.innerText="Loading..."
     const imageRef = doc(db,"users",profileUid)
     getDoc(imageRef).then((data)=>{
         console.log(data.data());

@@ -25,7 +25,8 @@ import {
     arrayRemove,
     updateDoc,
     query,
-    where
+    where,
+    deleteDoc 
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 
@@ -66,7 +67,8 @@ export {
     arrayRemove,
     updateDoc,
     query,
-    where
+    where,
+    deleteDoc 
 }
 
 

@@ -25,7 +25,10 @@ const myProduts_home = document.getElementById("myProduts_home")
 getaAllproducts()
 onAuthStateChanged(auth, (user) => {
     if (user) {
+        const email = user.email
         const uid = user.uid;
+        getaAllproducts(email)
+        console.log("user ki email==>",user.email);
         getUserImage(uid)
         login_btn_home.style.display = "none"
         user_image.style.display = "inline-block"
@@ -41,6 +44,7 @@ onAuthStateChanged(auth, (user) => {
         // window.location.href = '/login/login.html'
     }
 });
+
 signout_btn.addEventListener("click", function () {
     signOut(auth)
 })
@@ -49,24 +53,24 @@ signout_btn.addEventListener("click", function () {
 function getUserImage(uid) {
     const userRef = doc(db, "users", uid)
     getDoc(userRef).then((data) => {
-        console.log("user image", data.data().img);
+        // console.log("user image", data.data().img);
         user_image.src = data.data().img
     }).catch((err) => {
+        console.log(err);
         alert(err)
     })
 }
 
 
-
-async function getaAllproducts() {
+async function getaAllproducts(email) {
     try {
         const querySnapshot = await getDocs(collection(db, "addProduct"));
         dispaly_product.innerHTML = ""
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
+            // console.log(`${doc.id} => ${doc.data()}`);
             const products = doc.data()
-            const { images, productName, productPrice, Likes, productCategerous } = products
             console.log(products);
+            const { images,createdByEmail, productName, productPrice, Likes, productCategerous } = products
             const cartProduce = `
         <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img class="rounded-t-lg w-full h-48 object-cover" src="${images}" alt="Product Image">
@@ -74,9 +78,11 @@ async function getaAllproducts() {
                 <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${productName}</h5>
                 <p class="text-gray-700 dark:text-gray-400 mt-3">PRICE : ${productPrice}</p>
                 <p class="text-gray-700 dark:text-gray-400 mt-3">CATEGORY : ${productCategerous}</p>
-                <button id = ${doc.id} onclick="carted(this)" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">
+                <p class="text-gray-700 dark:text-gray-400 mt-3">CREATOR : ${createdByEmail}</p>
+                <button  id= ${doc.id} onclick="carted(this)" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 ${auth?.currentUser && products?.Likes?.includes(auth.currentUser.uid) ? "carted..." : "Add to Cart"}
                 </button>
+                
             </div>
         </div>
         `

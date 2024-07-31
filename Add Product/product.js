@@ -1,14 +1,17 @@
-import { uploadBytes, getDownloadURL, ref, storage, db, collection, addDoc } from "../utils.js"
-
+import { auth, uploadBytes, getDownloadURL, ref, storage, db, collection, addDoc } from "../utils.js"
 
 
 const product_form = document.getElementById("product_form")
 const Add_Product_btn = document.getElementById("Add_Product_btn")
 
+// console.log(auth.currentUser.email);
+// console.log(auth.currentUser.email);
+// console.log(auth.currentUser.email);
+
 product_form.addEventListener("submit", function (e) {
     e.preventDefault()
     Add_Product_btn.disabled = true
-    Add_Product_btn.innerText = "Add Product"
+    Add_Product_btn.innerText = "Loading..."
     console.log("e console", e);
 
     const productInfo = {
@@ -16,8 +19,10 @@ product_form.addEventListener("submit", function (e) {
         productName: e.target[1].value,
         productPrice: e.target[2].value,
         productCategerous: e.target[3].value,
+        createdBy : auth.currentUser.uid,
+        createdByEmail : auth.currentUser.email,
         Likes: []
-    }
+    }  
 
     const imgRef = ref(storage, productInfo.images.name)
     uploadBytes(imgRef, productInfo.images).then(() => {

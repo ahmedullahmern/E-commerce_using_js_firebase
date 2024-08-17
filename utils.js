@@ -3,6 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebas
 import {
     getAuth,
     onAuthStateChanged,
+    sendPasswordResetEmail,
     createUserWithEmailAndPassword,
     signOut,
     signInWithEmailAndPassword
@@ -26,7 +27,7 @@ import {
     updateDoc,
     query,
     where,
-    deleteDoc 
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 
@@ -68,7 +69,8 @@ export {
     updateDoc,
     query,
     where,
-    deleteDoc 
+    deleteDoc,
+    sendPasswordResetEmail
 }
 
 

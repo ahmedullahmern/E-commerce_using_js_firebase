@@ -91,6 +91,7 @@ async function getaAllproducts(email) {
 
         });
     } catch (err) {
+        alert(err)
         console.log(err)
     }
 }

@@ -48,6 +48,11 @@ signup_form.addEventListener("submit", function (e) {
                     signup_btn.disabled = false
                     console.log("url nahi deya", e);
                 })
+                Swal.fire({
+                    title: 'Login Completed!',
+                    text: "Do you want to continue",
+                    icon: 'Success',
+                })
             }).catch((err) => {
                 console.log("image uploade nahi ho ra ha he", err);
                 alert(err)
@@ -58,9 +63,13 @@ signup_form.addEventListener("submit", function (e) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(error)
             signup_btn.innerText = "Signup"
             signup_btn.disabled = false
+            Swal.fire({
+                title: 'SomeThing Went Worng',
+                text: errorMessage,
+                icon: 'error',
+            })
         });
 })
 

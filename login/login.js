@@ -15,19 +15,30 @@ login_form.addEventListener("submit", function (e) {
   console.log("email", email);
   console.log("password", password);
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
+      await Swal.fire({
+        title: 'Login Completed!',
+        text: "Do you want to continue",
+        icon: 'Success',
+      })
       // Signed in 
       const user = userCredential.user;
       // ...
       window.location.href = '/'
       login_btn.disabled = false
       login_btn.innerText = "LOGIN"
+
     })
     .catch((error) => {
       login_btn.disabled = false
-      login_btn.innerText = "LOGIN" 
+      login_btn.innerText = "LOGIN"
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(error)
+      Swal.fire({
+        title: 'SomeThing Went Worng',
+        text: errorMessage,
+        icon: 'error',
+      })
+      // alert(error)
     });
 })

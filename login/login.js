@@ -37,7 +37,7 @@ login_form.addEventListener("submit", function (e) {
       Swal.fire({
         title: 'SomeThing Went Worng',
         text: errorMessage,
-        icon: 'error',
+        icon: 'Success',
       })
       // alert(error)
     });

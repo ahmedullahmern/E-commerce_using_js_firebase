@@ -51,7 +51,7 @@ signup_form.addEventListener("submit", function (e) {
                 Swal.fire({
                     title: 'Login Completed!',
                     text: "Do you want to continue",
-                    icon: 'Success',
+                    icon: "success",
                 })
             }).catch((err) => {
                 console.log("image uploade nahi ho ra ha he", err);

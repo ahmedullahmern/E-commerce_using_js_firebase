@@ -21,6 +21,7 @@ const user_image = document.getElementById("user_image")
 const addproduct_home = document.getElementById("addproduct_home")
 const dispaly_product = document.getElementById("dispaly_product")
 const myProduts_home = document.getElementById("myProduts_home")
+
 del_btn()
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -92,16 +93,16 @@ async function getOnlyMyproducts(uid) {
     }
 }
 
-async function  del_btn(e){
-  try {
-    console.log(e.innerText)
-    await deleteDoc(doc(db, "addProduct", e.id));
-    console.log("del ho gaya");
-    const User_uid = auth.currentUser.uid
-    getOnlyMyproducts(User_uid)
-  } catch (error) {
-    console.log(error);
-  }
+async function del_btn(e) {
+    try {
+        console.log(e.innerText)
+        await deleteDoc(doc(db, "addProduct", e.id));
+        console.log("del ho gaya");
+        const User_uid = auth.currentUser.uid
+        getOnlyMyproducts(User_uid)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // function carted(e) {

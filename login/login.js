@@ -19,7 +19,7 @@ login_form.addEventListener("submit", function (e) {
       await Swal.fire({
         title: 'Login Completed!',
         text: "Do you want to continue",
-        icon: 'Success',
+        icon: 'success',
       })
       // Signed in 
       const user = userCredential.user;
@@ -37,7 +37,7 @@ login_form.addEventListener("submit", function (e) {
       Swal.fire({
         title: 'SomeThing Went Worng',
         text: errorMessage,
-        icon: 'Success',
+        icon: 'error',
       })
       // alert(error)
     });

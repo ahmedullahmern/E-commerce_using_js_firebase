@@ -104,9 +104,8 @@ function toggleCart(e) {
         // Loading indicator
         e.innerText = "Loading...";
         e.disabled = true; // Disable button to prevent multiple clicks
-
+        
         const updateAction = isCarted ? arrayRemove : arrayUnion;
-
         updateDoc(docRef, {
             Likes: updateAction(auth.currentUser.uid)
         }).then(() => {
